@@ -108,3 +108,15 @@ class AbstractUser(ABC):
     @property
     def name(self):
         return self.__name
+
+    def __del__(self):
+        pass
+
+    def cascade_deletion(self, dict_key: str):
+        global users_dict
+        users_dict[dict_key].pop(str(self.__id), None)
+        with open('users.json', 'w') as f:
+            json.dump(users_dict, f,  indent=4)
+        print(f'{self.username} removido.')
+        self.__refs__[self.__class__].remove(weakref.ref(self))
+        self.__del__()

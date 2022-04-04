@@ -41,5 +41,8 @@ if __name__ == "__main__":
     for e in emp:
         print(f'{e.id} : {e.username} - {e.name}')
 
-    cus = Customer.get_instance(3)
-    print(cus, cus.username, cus.id)
+    try:
+        cus = Customer.get_instance(3)
+        print(cus, cus.username, cus.id)
+    except LookupError:
+        pass

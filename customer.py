@@ -23,3 +23,11 @@ class Customer(AbstractUser):
 
     def edit_user(self, username: str = None, name: str = None):
         super().edit_user('customers', username, name)
+
+    @classmethod
+    def delete_user(cls, user_id: int):
+        obj = cls.get_instance(user_id)
+        obj.cascade_deletion()
+
+    def cascade_deletion(self):
+        super().cascade_deletion('customers')
