@@ -2,6 +2,8 @@ from collections import defaultdict
 import json
 import weakref
 
+from logger import logger
+
 has_loaded = False
 users_dict = {}
 '''
@@ -47,6 +49,7 @@ class User:
                     }
                 }
             )
+            logger.log_message({'ADD_USER_JSON': users_dict})
             with open('users.json', 'w') as f:
                 json.dump(users_dict, f,  indent=4)
 
@@ -60,6 +63,7 @@ class User:
         new_id = 0
         for key in users_dict[dict_key].keys():
             new_id = int(key)
+        logger.log_message({'NEWLY_GEN_USER_ID': new_id + 1})
         return new_id + 1
 
     def edit_user(self, dict_key: str, username: str = None, name: str = None):
@@ -76,6 +80,7 @@ class User:
                     }
                 }
             )
+        logger.log_message({'EDIT_USER_JSON': users_dict})
         with open('users.json', 'w') as f:
                 json.dump(users_dict, f,  indent=4)
 
@@ -116,4 +121,5 @@ class User:
             json.dump(users_dict, f,  indent=4)
         print(f'{self.username} removido.')
         self.__refs__[self.__class__].remove(weakref.ref(self))
+        logger.log_message({'CASCADE_DELETION': 'finish'})
         self.__del__()

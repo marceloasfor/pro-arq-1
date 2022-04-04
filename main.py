@@ -3,6 +3,7 @@ import json
 import user
 from customer import Customer
 from employee import Employee
+from logger import logger
 
 
 if __name__ == "__main__":
@@ -74,3 +75,6 @@ if __name__ == "__main__":
         print(f'[{cust.id}:{cust.username}] - {cust.name}')
 
     # Employee methods:
+    # TODO
+
+    logger.log_save()
