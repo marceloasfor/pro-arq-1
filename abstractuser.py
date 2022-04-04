@@ -46,8 +46,8 @@ class AbstractUser(ABC):
             with open('users.json', 'w') as f:
                 json.dump(users_dict, f,  indent=4)
 
-        self.username = username
-        self.id = id
+        self.__username = username
+        self.__id = id
         self.__refs__[self.__class__].append(weakref.ref(self))
         return True
 
@@ -63,3 +63,11 @@ class AbstractUser(ABC):
             inst = inst_ref()
             if inst is not None:
                 yield inst
+
+    @property
+    def id(self):
+        return self.__id
+
+    @property
+    def username(self):
+        return self.__username
