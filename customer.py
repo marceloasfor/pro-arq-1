@@ -1,7 +1,7 @@
-from abstractuser import AbstractUser
+from user import User
 
 
-class Customer(AbstractUser):
+class Customer(User):
     def __init__(self, username: str, name:str, user_id=None):
         super().__init__(
             username=username, 

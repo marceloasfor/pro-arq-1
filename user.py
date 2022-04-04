@@ -1,4 +1,3 @@
-from abc import ABC, abstractmethod
 from collections import defaultdict
 import json
 import weakref
@@ -19,14 +18,13 @@ employees:
 '''
 
 
-class AbstractUser(ABC):
+class User:
     """
     Base class User
     """
 
     __refs__ = defaultdict(list)
 
-    @abstractmethod
     def __init__(
         self, username: str,
         name: str,
@@ -89,7 +87,6 @@ class AbstractUser(ABC):
                 yield inst
 
     @classmethod
-    @abstractmethod
     def get_instance(cls, user_id: int):
         for inst_ref in cls.__refs__[cls]:
             inst = inst_ref()

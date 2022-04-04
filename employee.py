@@ -1,7 +1,7 @@
-from abstractuser import AbstractUser
+from user import User
 
 
-class Employee(AbstractUser):
+class Employee(User):
     def __init__(self, username: str, name: str, user_id=None):
         super().__init__(
             username=username, 
