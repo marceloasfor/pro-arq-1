@@ -1,0 +1,10 @@
+bin
+bin/*
+lib
+lib/*
+include
+include/*
+pyvenv.cfg
+.git
+.git/*
+.DS_Store

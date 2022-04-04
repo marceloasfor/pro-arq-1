@@ -1,24 +1,6 @@
 {
     "customers": {
-        "1": {
-            "username": "marcelo"
-        },
-        "2": {
-            "username": "tomas"
-        },
-        "3": {
-            "username": "john"
-        },
-        "4": {
-            "username": "pedro"
-        }
     },
     "employees": {
-        "1": {
-            "username": "joao"
-        },
-        "2": {
-            "username": "marcos"
-        }
     }
 }
