@@ -27,7 +27,12 @@ class AbstractUser(ABC):
     __refs__ = defaultdict(list)
 
     @abstractmethod
-    def __init__(self, username: str, dict_key: str, user_id=None) -> bool:
+    def __init__(
+        self, username: str,
+        name: str,
+        dict_key: str,
+        user_id=None
+    ) -> bool:
         global has_loaded, users_dict
         id = self.generate_id(dict_key) if not user_id else user_id
 
@@ -40,6 +45,7 @@ class AbstractUser(ABC):
                 {
                     id: {
                         'username': username,
+                        'name': name,
                     }
                 }
             )
@@ -48,6 +54,7 @@ class AbstractUser(ABC):
 
         self.__username = username
         self.__id = id
+        self.__name = name
         self.__refs__[self.__class__].append(weakref.ref(self))
         return True
 
@@ -64,6 +71,15 @@ class AbstractUser(ABC):
             if inst is not None:
                 yield inst
 
+    @classmethod
+    @abstractmethod
+    def get_instance(cls, user_id: int):
+        for inst_ref in cls.__refs__[cls]:
+            inst = inst_ref()
+            if inst is not None and inst.id == user_id:
+                return inst
+        raise LookupError
+
     @property
     def id(self):
         return self.__id
@@ -71,3 +87,7 @@ class AbstractUser(ABC):
     @property
     def username(self):
         return self.__username
+
+    @property
+    def name(self):
+        return self.__name
