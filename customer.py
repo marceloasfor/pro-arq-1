@@ -20,3 +20,6 @@ class Customer(AbstractUser):
     @classmethod
     def get_instance(cls, user_id: int):
         return super().get_instance(user_id)
+
+    def edit_user(self, username: str = None, name: str = None):
+        super().edit_user('customers', username, name)

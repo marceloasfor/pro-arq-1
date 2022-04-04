@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import json
 
 import abstractuser
@@ -36,11 +35,11 @@ if __name__ == "__main__":
 
     print('Clientes')
     for c in cust:
-        print(f'{c.id} : {c.username}')
+        print(f'{c.id} : {c.username} - {c.name}')
 
     print('Funcionarios')
     for e in emp:
-        print(f'{e.id} : {e.username}')
+        print(f'{e.id} : {e.username} - {e.name}')
 
     cus = Customer.get_instance(3)
     print(cus, cus.username, cus.id)

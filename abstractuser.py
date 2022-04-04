@@ -34,7 +34,7 @@ class AbstractUser(ABC):
         user_id=None
     ) -> bool:
         global has_loaded, users_dict
-        id = self.generate_id(dict_key) if not user_id else user_id
+        id = self.generate_id(dict_key) if not user_id else int(user_id)
 
         if has_loaded:
             for value in users_dict[dict_key].values():
@@ -43,7 +43,7 @@ class AbstractUser(ABC):
                     return False
             users_dict[dict_key].update(
                 {
-                    id: {
+                    str(id): {
                         'username': username,
                         'name': name,
                     }
@@ -53,7 +53,7 @@ class AbstractUser(ABC):
                 json.dump(users_dict, f,  indent=4)
 
         self.__username = username
-        self.__id = id
+        self.__id = int(id)
         self.__name = name
         self.__refs__[self.__class__].append(weakref.ref(self))
         return True
@@ -63,6 +63,23 @@ class AbstractUser(ABC):
         for key in users_dict[dict_key].keys():
             new_id = int(key)
         return new_id + 1
+
+    def edit_user(self, dict_key: str, username: str = None, name: str = None):
+        global users_dict
+        if name:
+            self.__name = name
+        if username:
+            self.__username = username
+        users_dict[dict_key].update(
+                {
+                    str(self.__id): {
+                        'username': self.__username,
+                        'name': self.__name,
+                    }
+                }
+            )
+        with open('users.json', 'w') as f:
+                json.dump(users_dict, f,  indent=4)
 
     @classmethod
     def get_instances(cls):
