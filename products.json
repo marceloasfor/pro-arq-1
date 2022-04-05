@@ -1,0 +1,44 @@
+{
+    "products": {
+        "1": {
+            "product": "Carro11",
+            "price": 15500.0,
+            "qtty": 3
+        },
+        "2": {
+            "product": "Carro12",
+            "price": 16000.0,
+            "qtty": 4
+        },
+        "3": {
+            "product": "Carro13",
+            "price": 12000.0,
+            "qtty": 5
+        },
+        "4": {
+            "product": "Carro1",
+            "price": 15000.0,
+            "qtty": 5
+        },
+        "5": {
+            "product": "Carro2",
+            "price": 25000.0,
+            "qtty": 10
+        },
+        "6": {
+            "product": "Carro3",
+            "price": 35000.0,
+            "qtty": 15
+        },
+        "7": {
+            "product": "Carro4",
+            "price": 45000.0,
+            "qtty": 20
+        },
+        "8": {
+            "product": "Moto",
+            "price": 262.144,
+            "qtty": 12
+        }
+    }
+}

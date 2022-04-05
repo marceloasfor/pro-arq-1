@@ -1,6 +1,38 @@
 {
     "customers": {
+        "1": {
+            "username": "marcelo",
+            "name": "Marcelo"
+        },
+        "2": {
+            "username": "tomas",
+            "name": "Tomas"
+        },
+        "3": {
+            "username": "john",
+            "name": "John"
+        },
+        "4": {
+            "username": "pedro",
+            "name": "Pedro"
+        }
     },
     "employees": {
+        "1": {
+            "username": "joao",
+            "name": "Joao"
+        },
+        "2": {
+            "username": "marcos",
+            "name": "Marcos"
+        },
+        "3": {
+            "username": "Jackie",
+            "name": "Jackie Chan"
+        },
+        "4": {
+            "username": "marcelo",
+            "name": "Marcelo"
+        }
     }
 }

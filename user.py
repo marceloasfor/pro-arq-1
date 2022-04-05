@@ -1,3 +1,4 @@
+from abc import ABC
 from collections import defaultdict
 import json
 import weakref
@@ -20,7 +21,7 @@ employees:
 '''
 
 
-class User:
+class User(ABC):
     """
     Base class User
     """

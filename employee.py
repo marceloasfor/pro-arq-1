@@ -4,7 +4,7 @@ from user import User
 class Employee(User):
     def __init__(self, username: str, name: str, user_id=None):
         super().__init__(
-            username=username, 
+            username=username,
             name=name,
             dict_key='employees',
             user_id=user_id,
